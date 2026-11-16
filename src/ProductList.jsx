@@ -6,7 +6,8 @@ import { addItem } from './CartSlice';     // 1. Importación agregada
 
 function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
-    
+    const cartItems = useSelector(state => state.cart.items);
+     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     // 2. useState inicializado vacío y handleAddToCart separado debajo
     const [addedToCart, setAddedToCart] = useState({});
     const [showCart, setShowCart] = useState(false);
